@@ -8,7 +8,7 @@ spring:
           uri: https://github.com/kszubra/kodilla-microservices-configuration.git
           refresh-rate: 15
           timeout: 5
-          search-paths: '*/configuration/{application}/{profile}/'
+          search-paths: 'configuration/,configuration/{application}/{profile}'
 
 server:
   port: 8888
