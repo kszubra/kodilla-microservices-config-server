@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-config
+  labels:
+    app: k8s-onfig
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: k8s-config
+  template:
+    metadata:
+      labels:
+        app: k8s-config
+    spec:
+      containers:
+        - name: k8s-config
+          image: kodilla-config-server-k8s
+          ports:
+            - containerPort: 8888
+          readinessProbe:
+            httpGet:
+              port: 8888
+              path: /actuator/health
+            initialDelaySeconds: 10
+            periodSeconds: 3
+          envFrom:
+            - configMapRef:
+                name: k8s-config
