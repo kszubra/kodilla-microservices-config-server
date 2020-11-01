@@ -2,6 +2,6 @@ version: '3'
 services:
   config-server:
     container_name: "config-server"
-    image: config-server-1
+    image: kodilla-config-server-k8s
     ports:
       - "8888:8888"
